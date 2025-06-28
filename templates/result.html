@@ -48,6 +48,22 @@
     .highlight.no {
       color: darkgreen;
     }
+    .highlight.error {
+      color: #d63031;
+      background-color: #ffeaea;
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: 1px solid #ffcccc;
+      display: inline-block;
+      animation: shake 0.3s ease-in-out 2;
+      @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      50% { transform: translateX(4px); }
+      75% { transform: translateX(-4px); }
+      100% { transform: translateX(0); }
+      }
+    }
 
     .back-button {
       margin-top: 30px;
@@ -74,7 +90,9 @@
     <div class="result-box">
     <h3>Your Prediction Result</h3>
     <div class="highlight {{ color_class }}">{{ prediction_text }}</div>
-    <a href="/" class="back-button">Try Again</a>
+    <form action="/" method="get">
+      <button type="submit" class="back-button">Try Again</button>
+    </form>
   </div>
 </body>
 </html>
