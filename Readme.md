@@ -26,11 +26,11 @@ The dataset contains 12 features and a binary target variable (`DEATH_EVENT`), r
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/heart-disease-predictor.git
+git clone https://github.com/Poushali-02/heart-disease-predictor.git
 cd heart-disease-predictor
 ```
 
-### 2. Create a virtual environment (optional but recommended)
+### 2. Create a virtual environment
 
 ```bash
 python -m venv venv
@@ -38,6 +38,12 @@ python -m venv venv
 venv\Scripts\activate
 # On Mac/Linux:
 source venv/bin/activate
+```
+
+### 3. Activate the virtual environment
+
+```bash
+venv/Scripts/activate
 ```
 
 ### 3. Install the dependencies
