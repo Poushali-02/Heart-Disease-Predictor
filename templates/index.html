@@ -4,26 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heart Disease</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <body>
-    <h2>Enter Patient Clinical Data</h2>
-    <form method="POST" action="/predict">
-        <input type="text" name="age" placeholder="Age"><br>
-        <input type="text" name="anaemia" placeholder="Anaemia (0/1)"><br>
-        <input type="text" name="creatinine_phosphokinase" placeholder="CPK Level"><br>
-        <input type="text" name="diabetes" placeholder="Diabetes (0/1)"><br>
-        <input type="text" name="ejection_fraction" placeholder="Ejection Fraction"><br>
-        <input type="text" name="high_blood_pressure" placeholder="High BP (0/1)"><br>
-        <input type="text" name="platelets" placeholder="Platelets"><br>
-        <input type="text" name="serum_creatinine" placeholder="Serum Creatinine"><br>
-        <input type="text" name="serum_sodium" placeholder="Serum Sodium"><br>
-        <input type="text" name="sex" placeholder="Sex (1=Male, 0=Female)"><br>
-        <input type="text" name="smoking" placeholder="Smoking (0/1)"><br>
-        <input type="text" name="time" placeholder="Follow-up Time (days)"><br><br>
 
-        <input type="submit" value="Predict">
+<div class="container">
+    <h2>Enter Patient Clinical Data</h2>
+    <form method="POST" action="/predict" class="form">
+
+        <!-- Age -->
+        <div class="step active">
+            <label>Enter the age of the patient : </label>
+            <input type="number" name="age" placeholder="Age" required min="0" max="120"><br>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- Anaemia -->
+        <div class="step">
+            <label>Does the patient has <a href="https://en.wikipedia.org/wiki/Anemia">Anaemia</a>? </label>
+            <select name="anaemia" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+            <button type="button" onclick="prevStep()">Previous</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+        
+        <!-- CPK level -->
+        <div class="step">
+            <label>Enter the <a href="https://www.ncbi.nlm.nih.gov/books/NBK546624/">CPK level(Creatinine Phosphokinase)</a> of patient: </label>
+            <input type="text" name="creatinine_phosphokinase" placeholder="CPK Level" required><br>
+            <button type="button" onclick="prevStep()">Previous</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+        
+        <!-- Diabetes -->
+        <div class="step">
+            <label>Does the patient has <a href="https://my.clevelandclinic.org/health/diseases/7104-diabetes">Diabetes</a>>? </label>
+            <select name="diabetes" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+            <button type="button" onclick="prevStep()">Previous</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- Ejection_fraction -->
+        <div class="step">
+            <label>Enter the <a href="https://my.clevelandclinic.org/health/articles/16950-ejection-fraction">Ejection Fraction</a> of patient: </label>
+            <input type="text" name="ejection_fraction" placeholder="Ejection Fraction" required><br>
+            <button type="button" onclick="prevStep()">Previous</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+        
+        <!-- BP -->
+        <div class="step">
+            <label>Does the patient has <a href="https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/symptoms-causes/syc-20373410">High Blood Pressure</a>?</label>
+            <select name="high_blood_pressure" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+            <button type="button" onclick="prevStep()">Previous</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+        
+        <!-- platelets -->
+        <div class="step">
+            <label>Enter the <a href="https://my.clevelandclinic.org/health/body/22879-platelets">Platelets</a> of patient: </label>
+            <input type="text" name="platelets" placeholder="Platelets" required><br>
+            <button type="button" onclick="prevStep()">Previous</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+        
+        <!-- serum_creatinine -->
+        <div class="step">
+            <label>Enter the <a href="https://www.kidneyfund.org/all-about-kidneys/tests/serum-creatinine-test">Serum Creatinine</a> of patient: </label>
+            <input type="text" name="serum_creatinine" placeholder="Serum Creatinine" required><br>
+            <button type="button" onclick="prevStep()">Previous</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- serum_sodium -->
+        <div class="step">
+            <label>Enter the <a href="https://medlineplus.gov/lab-tests/sodium-blood-test/">Serum Sodium level</a> of patient: </label>
+            <input type="text" name="serum_sodium" placeholder="Serum Sodium" required><br>
+            <button type="button" onclick="prevStep()">Previous</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+        
+        <!-- gender -->
+        <div class="step">
+            <label>Enter the gender of patient: </label>
+            <select name="sex" required>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select><br>
+            <button type="button" onclick="prevStep()">Previous</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- Smoke -->
+        <div class="step"> 
+            <label>Kindly say if the patient smokes or not: </label>
+            <select name="smoking" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+            <button type="button" onclick="prevStep()">Previous</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- time -->
+        <div class="step">
+            <label>Enter the <a href="https://toolkit.ncats.nih.gov/glossary/follow-up-duration/">Follow Up time</a> of patient: </label>
+            <input type="text" name="time" placeholder="Follow-up Time (days)" required><br>
+            <button type="button" onclick="prevStep()">Previous</button>
+            <input type="submit" value="Predict">
+        </div>
     </form>
-</body>
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

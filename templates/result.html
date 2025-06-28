@@ -4,8 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result</title>
+    <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #70a0ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .result-box {
+      background: white;
+      padding: 48px 56px 40px 56px;
+      border-radius: 10px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+      width: 600px;
+      max-width: 90vw;
+      border: 1.5px solid #e0e0e0;
+      min-height: 300px;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 2rem;
+      color: #222;
+      margin-bottom: 32px;
+      letter-spacing: 0.5px;
+    }
+
+    .highlight {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    .highlight.yes {
+      color: #e74c3c;
+    }
+    .highlight.no {
+      color: darkgreen;
+    }
+
+    .back-button {
+      margin-top: 30px;
+      padding: 14px 32px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: inline-block;
+    }
+
+    .back-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-    <h3>{{ prediction_text }}</h3>
+    <div class="result-box">
+    <h3>Your Prediction Result</h3>
+    <div class="highlight {{ color_class }}">{{ prediction_text }}</div>
+    <a href="/" class="back-button">Try Again</a>
+  </div>
 </body>
 </html>
