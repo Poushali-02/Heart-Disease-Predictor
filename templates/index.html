@@ -7,13 +7,23 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+<div class="intro">
+    <h1>Heart Disease Prediction</h1>
+    <p>Enter these clinical data of the patient to predict the risk of heart disease.</p>
+    <ol>
+    {% for i in required_fields %}
+        <li>{{ i.replace('_', ' ').capitalize() }} </li>
+    {% endfor %}
+    </ol>
+    <button type="button" onclick="startWizard()">Get Started</button>
+</div>
 
-<div class="container">
+<div class="container" style="display:none;">
     <h2>Enter Patient Clinical Data</h2>
-    <form method="POST" action="/predict" class="form">
+    <form method="POST" action="/predict" class="form" autocomplete="off">
 
         <!-- Age -->
-        <div class="step active">
+        <div class="step">
             <label>Enter the age of the patient : </label>
             <input type="number" name="age" placeholder="Age" required min="0" max="120"><br>
             <button type="button" onclick="nextStep()">Next</button>
@@ -21,7 +31,7 @@
 
         <!-- Anaemia -->
         <div class="step">
-            <label>Does the patient has <a href="https://en.wikipedia.org/wiki/Anemia">Anaemia</a>? </label>
+            <label>Does the patient has <a href="https://en.wikipedia.org/wiki/Anemia" style="text-decoration: none;">Anaemia</a>? </label>
             <select name="anaemia" required>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
@@ -32,7 +42,7 @@
         
         <!-- CPK level -->
         <div class="step">
-            <label>Enter the <a href="https://www.ncbi.nlm.nih.gov/books/NBK546624/">CPK level(Creatinine Phosphokinase)</a> of patient: </label>
+            <label>Enter the <a href="https://www.ncbi.nlm.nih.gov/books/NBK546624/" style="text-decoration: none;">CPK level(Creatinine Phosphokinase)</a> of patient: </label>
             <input type="text" name="creatinine_phosphokinase" placeholder="CPK Level" required><br>
             <button type="button" onclick="prevStep()">Previous</button>
             <button type="button" onclick="nextStep()">Next</button>
@@ -40,7 +50,7 @@
         
         <!-- Diabetes -->
         <div class="step">
-            <label>Does the patient has <a href="https://my.clevelandclinic.org/health/diseases/7104-diabetes">Diabetes</a>? </label>
+            <label>Does the patient has <a href="https://my.clevelandclinic.org/health/diseases/7104-diabetes" style="text-decoration: none;">Diabetes</a>? </label>
             <select name="diabetes" required>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
@@ -51,7 +61,7 @@
 
         <!-- Ejection_fraction -->
         <div class="step">
-            <label>Enter the <a href="https://my.clevelandclinic.org/health/articles/16950-ejection-fraction">Ejection Fraction</a> of patient: </label>
+            <label>Enter the <a href="https://my.clevelandclinic.org/health/articles/16950-ejection-fraction" style="text-decoration: none;">Ejection Fraction</a> of patient: </label>
             <input type="text" name="ejection_fraction" placeholder="Ejection Fraction" required><br>
             <button type="button" onclick="prevStep()">Previous</button>
             <button type="button" onclick="nextStep()">Next</button>
@@ -59,7 +69,7 @@
         
         <!-- BP -->
         <div class="step">
-            <label>Does the patient has <a href="https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/symptoms-causes/syc-20373410">High Blood Pressure</a>?</label>
+            <label>Does the patient has <a href="https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/symptoms-causes/syc-20373410" style="text-decoration: none;">High Blood Pressure</a>?</label>
             <select name="high_blood_pressure" required>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
@@ -70,7 +80,7 @@
         
         <!-- platelets -->
         <div class="step">
-            <label>Enter the <a href="https://my.clevelandclinic.org/health/body/22879-platelets">Platelets</a> of patient: </label>
+            <label>Enter the <a href="https://my.clevelandclinic.org/health/body/22879-platelets" style="text-decoration: none;">Platelets</a> of patient: </label>
             <input type="text" name="platelets" placeholder="Platelets" required><br>
             <button type="button" onclick="prevStep()">Previous</button>
             <button type="button" onclick="nextStep()">Next</button>
@@ -78,7 +88,7 @@
         
         <!-- serum_creatinine -->
         <div class="step">
-            <label>Enter the <a href="https://www.kidneyfund.org/all-about-kidneys/tests/serum-creatinine-test">Serum Creatinine</a> of patient: </label>
+            <label>Enter the <a href="https://www.kidneyfund.org/all-about-kidneys/tests/serum-creatinine-test" style="text-decoration: none;">Serum Creatinine</a> of patient: </label>
             <input type="text" name="serum_creatinine" placeholder="Serum Creatinine" required><br>
             <button type="button" onclick="prevStep()">Previous</button>
             <button type="button" onclick="nextStep()">Next</button>
@@ -86,7 +96,7 @@
 
         <!-- serum_sodium -->
         <div class="step">
-            <label>Enter the <a href="https://medlineplus.gov/lab-tests/sodium-blood-test/">Serum Sodium level</a> of patient: </label>
+            <label>Enter the <a href="https://medlineplus.gov/lab-tests/sodium-blood-test/" style="text-decoration: none;">Serum Sodium level</a> of patient: </label>
             <input type="text" name="serum_sodium" placeholder="Serum Sodium" required><br>
             <button type="button" onclick="prevStep()">Previous</button>
             <button type="button" onclick="nextStep()">Next</button>
@@ -116,12 +126,15 @@
 
         <!-- time -->
         <div class="step">
-            <label>Enter the <a href="https://toolkit.ncats.nih.gov/glossary/follow-up-duration/">Follow Up time</a> of patient: </label>
+            <label>Enter the <a href="https://toolkit.ncats.nih.gov/glossary/follow-up-duration/" style="text-decoration: none;">Follow Up time</a> of patient: </label>
             <input type="text" name="time" placeholder="Follow-up Time (days)" required><br>
             <button type="button" onclick="prevStep()">Previous</button>
             <input type="submit" value="Predict">
         </div>
     </form>
+</div>
+<div id="loading-overlay" style="display:none;">
+  <div class="loader"></div>
 </div>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

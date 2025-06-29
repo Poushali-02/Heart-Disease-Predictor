@@ -1,6 +1,13 @@
 let currentStep = 0
 const steps = document.querySelectorAll('.step')
 
+function startWizard() {
+    document.querySelector('.intro').style.display = 'none';
+    document.querySelector('.container').style.display = 'block';
+    // Optionally, show the first step if not already handled
+    if (typeof showStep === 'function') showStep(0);
+}
+
 function showStep(index){
     steps.forEach((step, i) => {
         if (i === index){
@@ -25,3 +32,6 @@ function prevStep(){
 }
 
 document.addEventListener('DOMContentLoaded', () => showStep(currentStep));
+document.querySelector('.form').addEventListener('submit', function() {
+    document.getElementById('loading-overlay').style.display = 'flex';
+});

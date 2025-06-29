@@ -55,15 +55,15 @@
       border-radius: 8px;
       border: 1px solid #ffcccc;
       display: inline-block;
-      animation: shake 0.3s ease-in-out 2;
-      @keyframes shake {
+      animation: shake 0.3s ease-in-out 2; 
+    }
+    @keyframes shake {
       0% { transform: translateX(0); }
       25% { transform: translateX(-4px); }
       50% { transform: translateX(4px); }
       75% { transform: translateX(-4px); }
       100% { transform: translateX(0); }
       }
-    }
 
     .back-button {
       margin-top: 30px;
@@ -91,7 +91,7 @@
     <h3>Your Prediction Result</h3>
     <div class="highlight {{ color_class }}">{{ prediction_text }}</div>
     <form action="/" method="get">
-      <button type="submit" class="back-button">Try Again</button>
+      <button type="submit" class="back-button" onclick="window.location.href='/'">Try Again</button>
     </form>
   </div>
 </body>

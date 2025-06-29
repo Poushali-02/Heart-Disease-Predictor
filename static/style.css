@@ -20,7 +20,76 @@ body {
   position: relative;
   z-index: 2;
 }
+/* Intro section styling to match container */
+.intro {
+  background: white;
+  padding: 48px 56px 40px 56px;
+  border-radius: 10px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+  width: 600px;
+  max-width: 90vw;
+  border: 1.5px solid #e0e0e0;
+  margin: 40px auto 32px auto;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
 
+.intro h1 {
+  margin-top: 0;
+  font-size: 2.2rem;
+  color: #222;
+  letter-spacing: 1px;
+}
+
+.intro p {
+  color: #444;
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+}
+
+.intro ol {
+  background: #f7faff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 24px 32px 24px 40px;
+  margin: 24px 0 32px 0;
+  font-size: 1.08rem;
+  color: #333;
+  box-shadow: 0 2px 12px rgba(112, 160, 255, 0.07);
+  list-style-position: inside;
+  text-align: left;
+  display: inline-block;
+}
+
+.intro ol li {
+  margin-bottom: 10px;
+  padding-left: 2px;
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.intro ol li:last-child {
+  margin-bottom: 0;
+}
+
+.intro button[type="button"] {
+  padding: 10px 28px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.intro button[type="button"]:hover {
+  background-color: #0056b3;
+}
 h2 {
   text-align: center;
   margin-bottom: 32px;
@@ -89,4 +158,27 @@ input[name="age"] {
   border: 2px solid #ff9800 !important;
   outline: 2px solid #ff9800 !important;
   z-index: 10;
+}
+#loading-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.7);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #007bff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
 }
